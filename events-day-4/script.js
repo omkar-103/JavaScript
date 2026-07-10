@@ -1,5 +1,5 @@
 console.log("first")
 const btn = document.querySelector('button');
-btn.addEventListener('dblclick', (events) => {
+btn.addEventListener('mouseover', (events) => {
     console.log(events)
 })
