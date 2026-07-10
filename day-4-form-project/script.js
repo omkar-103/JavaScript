@@ -10,6 +10,8 @@ events.preventDefault() //Form ko page reload karne se rokhti hai
 console.log("Form Event triggered")
 console.log(name.value);
 console.log(age.value);
+
+form.reset();
 })
 
 

@@ -20,6 +20,12 @@ main{
 
 form{
     background-color: antiquewhite;
+    padding: 30px;
+    gap: 2px;
+    justify-content: space-evenly;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
 }
 

@@ -1,0 +1,32 @@
+*{
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+}
+html, body {
+    height: 100%;
+    width: 100%;
+    background-color: black;
+    padding-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+main{
+    /* padding-top: 20px; */
+    height: 70%;
+width:25%;
+    border: 2px solid white;
+    border-radius: 10px;
+}
+
+button{
+    background-color: white;
+    border-radius: 10px;
+    color: black;
+    padding: 10px, 25px;
+    gap: 10px;
+    border: none;
+}
