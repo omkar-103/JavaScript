@@ -3,7 +3,11 @@ const createb= document.querySelector('#create')
 const formDiv = document.querySelector('.forms')
 const closebtn = document.querySelector('#close')
 const form = document.querySelector("form")
-const productsarr = [];
+
+const productsarr = JSON.parse(localStorage.getItem("products")) || [];
+let lsd = JSON.parse(localStorage.getItem("products"));
+console.log(lsd)
+
 const productsDiv = document.querySelector('.products')
  let upadteIndex = null;
 
@@ -25,7 +29,7 @@ productsDiv.innerHTML += ` <div class="product-card">
 
             <div class="btns">
                 <button onclick="updateProduct('${elem.name}')" id="update">Update</button>
-                <button id="delete" onclick="deleteProduct('${index}')">Delete</button>
+                <button id="delete" onclick="deleteProduct(${index})">Delete</button>
             </div>
 
 
@@ -77,10 +81,13 @@ upadteIndex = null;
     productsarr.push(obj);
 }
 
+// Save after add/update
+localStorage.setItem('products', JSON.stringify(productsarr));
+
 console.log(productsarr);
 form.reset();
 ui();
- formDiv.style.display = "none";
+formDiv.style.display = "none";
 
 
 
@@ -104,5 +111,45 @@ const updateProduct = (name) => {
 // Delete Product
 const deleteProduct = (index) => {
     productsarr.splice(index, 1);
+    localStorage.setItem('products', JSON.stringify(productsarr));
     ui();
 };
+
+
+// Save to Loca Storage
+// localStorage.setItem('name', 'nitin gadkari')
+// localStorage.setItem('song', 'tera mera khatam')
+
+// let lsd = localStorage.getItem("name");
+// console.log(lsd)
+
+
+// let data = [
+//     {
+//         name:"piyush",
+//         age:69,
+//         address:"saket nagar",
+//         pincode:400012
+//     },
+//      {
+//         name:"cdf",
+//         age:269,
+//         address:"xcsdcds nagar",
+//         pincode:24234
+//     },
+//      {
+//         name:"cdscdcdsc",
+//         age:69,
+//         address:"sacwdfrgket nagar",
+//         pincode:40003112
+//     },
+// ];
+
+
+
+// localStorage.setItem("fampeople", JSON.stringify(data))
+// let lsd = localStorage.getItem("fampeople")
+// console.log(JSON.parse(lsd) )
+
+
+ui();
