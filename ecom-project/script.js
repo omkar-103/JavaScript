@@ -4,11 +4,13 @@ const formDiv = document.querySelector('.forms')
 const closebtn = document.querySelector('#close')
 const form = document.querySelector("form")
 const productsarr = [];
- const productsDiv = document.querySelector('.products')
+const productsDiv = document.querySelector('.products')
+ let upadteIndex = null;
+
 
 let ui = () => {
     productsDiv.innerHTML = "";
-productsarr.forEach((elem) => {
+productsarr.forEach((elem, index) => {
 productsDiv.innerHTML += ` <div class="product-card">
            
             <div class="img">
@@ -23,7 +25,7 @@ productsDiv.innerHTML += ` <div class="product-card">
 
             <div class="btns">
                 <button onclick="updateProduct('${elem.name}')" id="update">Update</button>
-                <button id="delete">Delete</button>
+                <button id="delete" onclick="deleteProduct('${index}')">Delete</button>
             </div>
 
 
@@ -66,7 +68,15 @@ let obj = {
     url
 }
 
-productsarr.push(obj);
+
+if(upadteIndex != null){
+productsarr[upadteIndex] = obj;
+upadteIndex = null;
+
+}else {
+    productsarr.push(obj);
+}
+
 console.log(productsarr);
 form.reset();
 ui();
@@ -76,17 +86,23 @@ ui();
 
 })
 
+
+// Update Products 
 const updateProduct = (name) => {
     formDiv.style.display = "flex";
     let product = productsarr.find((elem) => elem.name === name);
+    upadteIndex = productsarr.findIndex((elem) => elem.name === name);
     console.log("Selected Product:- ", product);
 
     form[0].value = product.name;    
     form[1].value = product.description;
     form[2].value = product.price;
     form[3].value = product.url;   
-
-
     
+};
 
-}
+// Delete Product
+const deleteProduct = (index) => {
+    productsarr.splice(index, 1);
+    ui();
+};
