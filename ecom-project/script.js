@@ -77,6 +77,16 @@ ui();
 })
 
 const updateProduct = (name) => {
+    formDiv.style.display = "flex";
     let product = productsarr.find((elem) => elem.name === name);
-    console.log(first)
+    console.log("Selected Product:- ", product);
+
+    form[0].value = product.name;    
+    form[1].value = product.description;
+    form[2].value = product.price;
+    form[3].value = product.url;   
+
+
+    
+
 }
